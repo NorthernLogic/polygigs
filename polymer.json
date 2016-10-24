@@ -1,0 +1,14 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/pg-app.html",
+  "fragments": [
+    "src/pages/front-page.html",
+    "src/pages/gig-detail-page.html",
+    "src/pages/404-page.html"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "data/gigs.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polygigs</title>
+
+    <meta name="description" content="A website for Polymer developers and employers to find each other.">
+    <meta property="og:site_name" content="Polygigs">
+    <meta property="og:title" content="Polygigs">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="A website for Polymer developers and employers to find each other.">
+    <meta property="og:image" content="/public/images/website_share.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Polygigs">
+    <meta name="twitter:description" content="A website for Polymer developers and employers to find each other.">
+    <meta name="twitter:site" content="@Polygigs">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <script>
+      window.Polymer = {
+        dom: 'shadow',
+        lazyRegister: true
+      };
+
+      (function() {
+        'use strict';
+
+        var onload = function() {
+          if (!window.HTMLImports) {
+            document.dispatchEvent(
+              new CustomEvent('WebComponentsReady', {bubbles: true})
+            );
+          }
+        };
+
+        var webComponentsSupported = (
+          'registerElement' in document
+          && 'import' in document.createElement('link')
+          && 'content' in document.createElement('template')
+        );
+
+        if (!webComponentsSupported) {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
+          script.onload = onload;
+          document.head.appendChild(script);
+        } else {
+          // For native imports, manually fire WebComponentsReady so user code
+          // can use the same code path for native and polyfill'd imports.
+          onload();
+        }
+      })();
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
+
+    <link rel="import" href="/src/pg-app.html">
+  </head>
+  <body>
+    <pg-app></pg-app>
+  </body>
+</html>

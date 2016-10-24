@@ -1,0 +1,96 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+
+<dom-module id="pg-app">
+<template>
+  <style>
+    :host {
+      --app-primary-color: #F75279;
+      --app-secondary-color: black;
+
+      display: block;
+    }
+
+    #mainToolbar {
+      background: var(--app-primary-color);
+      color: white;
+    }
+  </style>
+
+  <app-location route="{{route}}"></app-location>
+  <app-route route="{{route}}"
+    pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+  <app-drawer-layout drawer-width="288px" force-narrow fullbleed>
+
+    <app-drawer>
+      Side drawer needs menu stuffs
+    </app-drawer>
+
+    <app-header-layout has-scrolling-region>
+
+      <app-header effects="waterfall" reveals>
+        <app-toolbar id="mainToolbar">
+          Polygigs
+        </app-toolbar>
+      </app-header>
+
+      <iron-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="view404"
+        role="main">
+
+        <pg-front-page name="front"></pg-front-page>
+        <pg-404-page name="404"></pg-404-page>
+      </iron-pages>
+
+    </app-header-layout>
+
+  </app-drawer-layout>
+
+
+</template>
+
+<script>
+  Polymer({
+
+    is: 'pg-app',
+
+    properties: {
+      page: {
+        type: String,
+        reflectToAttribute: true,
+        observer: '_pageChanged'
+      }
+    },
+
+    observers: [
+      '_routePageChanged(routeData.page)'
+    ],
+
+    _routePageChanged: function(page) {
+      this.page = page || 'front';
+    },
+
+    _pageChanged: function(page) {
+      var resolvedPageUrl = this.resolveUrl('pages/' + page + '-page.html');
+      this.importHref(resolvedPageUrl, null, this._showPage404, true);
+    },
+
+    _showPage404: function() {
+      this.page = '404';
+    }
+
+  });
+</script>
+</dom-module>

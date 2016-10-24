@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../data/data-gigs-list.html">
+
+
+<dom-module id="pg-front-page">
+<template>
+  <style>
+    :host {
+      display: block;
+      padding: 20px;
+    }
+  </style>
+
+  <data-gigs-list gigs="{{gigs}}"></data-gigs-list>
+
+  <h1>Welcome to Polygigs</h1>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit impedit, tenetur nemo repellendus consectetur, beatae quas dolor molestias repudiandae velit iusto voluptatibus, aperiam mollitia magnam eaque hic, quos veritatis.</p>
+
+  <template is="dom-repeat" items="{{gigs}}" as="gig">
+    <h1>[[gig.title]]</h1>
+  </template>
+
+</template>
+
+<script>
+  Polymer({
+
+    is: 'pg-front-page',
+
+    properties: {
+      gigs: {
+        type: Array
+      }
+    }
+
+  });
+</script>
+</dom-module>

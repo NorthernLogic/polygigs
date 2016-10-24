@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+
+<dom-module id="data-gigs-list">
+<template>
+  <iron-ajax auto
+    url="/data/gigs.json"
+    handle-as="json"
+    on-response="_onResponse"></iron-ajax>
+</template>
+
+<script>
+  Polymer({
+
+    is: 'data-gigs-list',
+
+    properties: {
+      gigs: {
+        type: Array,
+        notify: true,
+        readOnly: true
+      }
+    },
+
+    _onResponse: function(event, request) {
+      this._setGigs(request.response);
+    }
+
+  });
+</script>
+</dom-module>

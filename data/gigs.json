@@ -1,0 +1,16 @@
+[
+  {
+    "id": 100,
+    "title": "Test Job Posting",
+    "description": "Godard pickled synth, stumptown food truck quinoa schlitz pop-up truffaut coloring book lo-fi. Pickled paleo try-hard, narwhal bespoke keytar migas mixtape drinking vinegar etsy hammock actually trust fund hella. Bitters affogato chillwave vice, gluten-free cardigan readymade hashtag chambray jean shorts 3 wolf moon meditation lomo paleo. Fixie meditation celiac lo-fi. Heirloom PBR&B VHS intelligentsia semiotics succulents, hell of four dollar toast small batch plaid subway tile edison bulb tumeric. Four loko live-edge tacos, coloring book offal synth kale chips biodiesel hashtag normcore skateboard iPhone try-hard locavore vape. Af prism butcher, semiotics scenester venmo pitchfork vape meggings.\n\nCopper mug letterpress aesthetic knausgaard helvetica. Fap mustache austin meggings ramps. Pop-up blue bottle sriracha, green juice seitan stumptown truffaut lomo unicorn brooklyn air plant succulents. Biodiesel twee vape cray, kinfolk paleo four dollar toast. Plaid pork belly polaroid echo park fap enamel pin tousled disrupt. Sustainable street art jean shorts chambray. Fanny pack af freegan, listicle lyft dreamcatcher kitsch.",
+    "location": null,
+    "isRemote": true,
+    "dateExpires": null,
+    "isActive": true,
+    "howToApply": "",
+    "posterName": "Benjamin Franklin",
+    "posterEmail": "thebenj@fathers.us.gov",
+    "posterCompany": "United States",
+    "posterLink": "https://us.gov"
+  }
+]

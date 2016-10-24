@@ -1,0 +1,7 @@
+{
+  "name": "polygigs",
+  "short_name": "polygigs",
+  "description": "A website for Polymer developers and employers to find each other.",
+  "start_url": "/",
+  "display": "standalone"
+}
