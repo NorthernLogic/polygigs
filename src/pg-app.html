@@ -63,7 +63,7 @@
             <a href="/" class="brand">Polygigs</a>
           </div>
           <a href="/gig-post">
-            <paper-button raised on-tap="_gotoPostGig">Post a Gig</paper-button>
+            <paper-button raised>Post a Gig</paper-button>
           </a>
         </app-toolbar>
       </app-header>
@@ -114,10 +114,6 @@
 
     _showPage404: function() {
       this.page = '404';
-    },
-
-    _gotoPostGig: function() {
-      this.page = 'gig-post';
     }
 
   });
