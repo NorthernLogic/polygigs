@@ -4,6 +4,7 @@
   "fragments": [
     "src/pages/front-page.html",
     "src/pages/gig-detail-page.html",
+    "src/pages/gig-post-page.html",
     "src/pages/404-page.html"
   ],
   "includeDependencies": [

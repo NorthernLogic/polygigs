@@ -3,11 +3,13 @@
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 
 <dom-module id="pg-app">
@@ -23,6 +25,23 @@
     #mainToolbar {
       background: var(--app-primary-color);
       color: white;
+    }
+
+    #mainToolbar a {
+      text-decoration: none;
+    }
+
+    #mainToolbar a.brand {
+      color: #fff;
+    }
+
+    #mainToolbar .flexed {
+      @apply(--layout-flex);
+    }
+
+    #mainToolbar paper-button {
+      background: white;
+      color: black;
     }
   </style>
 
@@ -40,7 +59,12 @@
 
       <app-header effects="waterfall" reveals>
         <app-toolbar id="mainToolbar">
-          Polygigs
+          <div class="flexed">
+            <a href="/" class="brand">Polygigs</a>
+          </div>
+          <a href="/gig-post">
+            <paper-button raised on-tap="_gotoPostGig">Post a Gig</paper-button>
+          </a>
         </app-toolbar>
       </app-header>
 
@@ -52,6 +76,7 @@
 
         <pg-front-page name="front"></pg-front-page>
         <pg-404-page name="404"></pg-404-page>
+        <pg-gig-post-page name="gig-post"></pg-gig-post-page>
       </iron-pages>
 
     </app-header-layout>
@@ -89,6 +114,10 @@
 
     _showPage404: function() {
       this.page = '404';
+    },
+
+    _gotoPostGig: function() {
+      this.page = 'gig-post';
     }
 
   });
