@@ -23,8 +23,8 @@
     }
 
     #mainToolbar {
-      background: var(--app-primary-color);
-      color: white;
+      background: rgba(255, 255, 255, .95);
+      box-shadow: 0px 2px 40px 0px rgba(0,0,0,0.08);
     }
 
     #mainToolbar a {
@@ -32,7 +32,12 @@
     }
 
     #mainToolbar a.brand {
-      color: #fff;
+      color: #1b3dff;
+      font-size: 28px;
+    }
+
+    #mainToolbar a.brand span {
+      color: #ff73a3;
     }
 
     #mainToolbar .flexed {
@@ -60,7 +65,7 @@
       <app-header effects="waterfall" reveals>
         <app-toolbar id="mainToolbar">
           <div class="flexed">
-            <a href="/" class="brand">Polygigs</a>
+            <a href="/" class="brand"><span>Poly</span>gigs</a>
           </div>
           <a href="/gig-post">
             <paper-button raised>Post a Gig</paper-button>
