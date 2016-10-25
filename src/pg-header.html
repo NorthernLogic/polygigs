@@ -1,0 +1,89 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+
+<dom-module id="pg-header">
+<template>
+  <style>
+    :host {
+      display: block;
+    }
+
+    .container {
+      @apply(--layout-horizontal);
+      @apply(--layout-center);
+
+      max-width: var(--app-desktop-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    app-toolbar {
+      background: rgba(255, 255, 255, .95);
+      box-shadow: 0px 2px 40px 0px rgba(0,0,0,0.08);
+    }
+
+    app-toolbar a {
+      text-decoration: none;
+      vertical-align: middle;
+    }
+
+    app-toolbar a.brand {
+      @apply(--layout-horizontal);
+      @apply(--layout-center);
+
+      color: rgba(0, 0, 0, .77);
+      margin-right: 16px;
+    }
+
+    app-toolbar .tagline {
+      font-size: 0.75em;
+      color: rgba(0, 0, 0, .56);
+    }
+
+    app-toolbar a.brand:hover {
+      color: var(--app-primary-color);
+    }
+
+    app-toolbar a.brand img {
+      margin-right: 8px;
+      height: 33px;
+    }
+
+    app-toolbar .flexed {
+      @apply(--layout-flex);
+    }
+
+    app-toolbar paper-button {
+      background: white;
+      color: black;
+    }
+  </style>
+
+  <app-toolbar>
+    <div class="container">
+      <a href="/" class="brand" title="Go to front page">
+        <img src="polymer-logo.png"> Gigs
+      </a>
+
+      <div class="flexed">
+        <span class="tagline">The unofficial Polymer job board.</span>
+      </div>
+
+      <!--<a href="/gig-post">
+        <paper-button>Post a Gig</paper-button>
+      </a>-->
+    </div>
+  </app-toolbar>
+
+</template>
+
+<script>
+  Polymer({
+
+    is: 'pg-header'
+
+  });
+</script>
+</dom-module>

@@ -4,12 +4,13 @@
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="pg-header.html">
 
 
 <dom-module id="pg-app">
@@ -20,33 +21,6 @@
       --app-secondary-color: black;
 
       display: block;
-    }
-
-    #mainToolbar {
-      background: rgba(255, 255, 255, .95);
-      box-shadow: 0px 2px 40px 0px rgba(0,0,0,0.08);
-    }
-
-    #mainToolbar a {
-      text-decoration: none;
-    }
-
-    #mainToolbar a.brand {
-      color: #1b3dff;
-      font-size: 28px;
-    }
-
-    #mainToolbar a.brand span {
-      color: #ff73a3;
-    }
-
-    #mainToolbar .flexed {
-      @apply(--layout-flex);
-    }
-
-    #mainToolbar paper-button {
-      background: white;
-      color: black;
     }
   </style>
 
@@ -63,14 +37,7 @@
     <app-header-layout has-scrolling-region>
 
       <app-header effects="waterfall" reveals>
-        <app-toolbar id="mainToolbar">
-          <div class="flexed">
-            <a href="/" class="brand"><span>Poly</span>gigs</a>
-          </div>
-          <a href="/gig-post">
-            <paper-button raised>Post a Gig</paper-button>
-          </a>
-        </app-toolbar>
+        <pg-header></pg-header>
       </app-header>
 
       <iron-pages
