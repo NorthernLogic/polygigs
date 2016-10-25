@@ -20,7 +20,12 @@
     :host {
       --app-primary-color: #F75279;
       --app-secondary-color: black;
-      --app-desktop-width: 1080px;
+
+      --app-desktop-width: {
+        max-width: 1080px;
+        margin: 0 auto;
+        width: 100%;
+      };
 
       display: block;
     }
