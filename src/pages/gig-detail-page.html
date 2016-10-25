@@ -1,4 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/marked-element/marked-element.html">
+
+<link rel="import" href="../data/data-gig-detail.html">
+
 
 <dom-module id="pg-gig-detail-page">
 <template>
@@ -7,11 +12,25 @@
       display: block;
       padding: 20px;
     }
+
+    .container {
+      @apply(--app-desktop-width);
+    }
   </style>
 
-  <h1>Gig Detail page</h1>
+  <app-route route="{{route}}"
+    pattern="/:gigId" data="{{routeData}}"></app-route>
+  <data-gig-detail gig-id="[[gigId]]" gig="{{gig}}"></data-gig-detail>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit impedit, tenetur nemo repellendus consectetur, beatae quas dolor molestias repudiandae velit iusto voluptatibus, aperiam mollitia magnam eaque hic, quos veritatis.</p>
+
+  <div class="container">
+    <h1>[[gig.title]]</h1>
+
+    <marked-element markdown="[[gig.description]]">
+      <div class="markdown-html"></div>
+    </marked-element>
+
+  </div>
 
 </template>
 
@@ -19,6 +38,23 @@
   Polymer({
 
     is: 'pg-gig-detail-page',
+
+    properties: {
+      route: {
+        type: String
+      },
+      gigId: {
+        type: String
+      }
+    },
+
+    observers: [
+      '_routeGigIdChanged(routeData.gigId)'
+    ],
+
+    _routeGigIdChanged: function(gigId) {
+      this.gigId = gigId;
+    }
 
   });
 </script>

@@ -1,0 +1,43 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<link rel="import" href="data-gigs-list.html">
+
+<dom-module id="data-gig-detail">
+<template>
+  <data-gigs-list gigs="{{gigs}}"></data-gigs-list>
+</template>
+
+<script>
+  Polymer({
+
+    is: 'data-gig-detail',
+
+    properties: {
+      gigId: {
+        type: Number
+      },
+
+      gig: {
+        type: Object,
+        notify: true,
+        readOnly: true
+      }
+    },
+
+    observers: [
+      '_findGig(gigId, gigs)'
+    ],
+
+    _findGig: function(gigId, gigs) {
+      for (var i = 0; i < gigs.length; i++) {
+        if (gigs[i].id == gigId) {
+          return this._setGig(gigs[i]);
+        }
+      }
+    }
+
+  });
+</script>
+</dom-module>

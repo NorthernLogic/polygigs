@@ -24,7 +24,7 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit impedit, tenetur nemo repellendus consectetur, beatae quas dolor molestias repudiandae velit iusto voluptatibus, aperiam mollitia magnam eaque hic, quos veritatis.</p>
 
     <template is="dom-repeat" items="{{gigs}}" as="gig">
-      <h1>[[gig.title]]</h1>
+      <h1><a href="/gig/[[gig.id]]">[[gig.title]]</a></h1>
     </template>
   </div class="container">
 
