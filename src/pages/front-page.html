@@ -10,17 +10,24 @@
       display: block;
       padding: 20px;
     }
+
+    .container {
+      max-width: var(--app-desktop-width);
+      margin: 0 auto;
+    }
   </style>
 
   <data-gigs-list gigs="{{gigs}}"></data-gigs-list>
 
-  <h1>Welcome to Polygigs</h1>
+  <div class="container">
+    <h1>Welcome to Polygigs</h1>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit impedit, tenetur nemo repellendus consectetur, beatae quas dolor molestias repudiandae velit iusto voluptatibus, aperiam mollitia magnam eaque hic, quos veritatis.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit impedit, tenetur nemo repellendus consectetur, beatae quas dolor molestias repudiandae velit iusto voluptatibus, aperiam mollitia magnam eaque hic, quos veritatis.</p>
 
-  <template is="dom-repeat" items="{{gigs}}" as="gig">
-    <h1>[[gig.title]]</h1>
-  </template>
+    <template is="dom-repeat" items="{{gigs}}" as="gig">
+      <h1>[[gig.title]]</h1>
+    </template>
+  </div class="container">
 
 </template>
 
