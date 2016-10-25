@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
+<dom-module id="copy-right">
+<template>
+  <span id="copyrightRange"></span> <content></content>
+</template>
+
+<script>
+  Polymer({
+
+    is: 'copy-right',
+
+    properties: {
+      startingYear: {
+        type: Number,
+        value: function() {
+          return new Date().getFullYear();
+        },
+        observer: '_startingYearChanged'
+      }
+    },
+
+    _startingYearChanged: function (startingYear) {
+      // Update innerHTML directly because Polymer does not allow you to do with this
+      // bindings because of potential script injection. If I wasn't using `&copy;`
+      // this wouldn't be needed.
+      this.$.copyrightRange.innerHTML = this._yearString(startingYear);
+    },
+
+    _yearString: function(startingYear) {
+      var currentYear = new Date().getFullYear();
+      var range;
+
+      if (startingYear === currentYear) {
+        range = startingYear;
+      } else {
+        range = [startingYear, currentYear].join('-');
+      }
+
+      return '&copy; ' + range;
+    }
+
+  });
+</script>
+</dom-module>

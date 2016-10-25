@@ -1,0 +1,51 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="components/copy-right.html">
+
+
+<dom-module id="pg-footer">
+<template>
+  <style>
+    :host {
+      display: block;
+      border-top: 1px #ccc solid;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--app-desktop-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .copyrights {
+      @apply(--layout-horizontal);
+      @apply(--layout-center);
+    }
+
+    .copyrights img {
+      margin-right: 8px;
+    }
+
+  </style>
+
+  <div class="container">
+
+    <div class="copyrights">
+      <img src="nl-logo.png" width="45" srcset="/src/nl-logo.png 90w, /src/nl-logo@2x.png 180w" alt="Northern Logic mark">
+      <copy-right starting-year="2016"><a href="https://wearenorthern.com/" title="Visit our website">Northern Logic</a></copy-right>
+    </div>
+
+  </div>
+
+</template>
+
+<script>
+  Polymer({
+
+    is: 'pg-footer'
+
+  });
+</script>
+</dom-module>
