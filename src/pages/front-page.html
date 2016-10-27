@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../data/data-gigs-list.html">
+<link rel="import" href="../components/nl-quip/nl-quip.html">
 
 
 <dom-module id="pg-front-page">
@@ -14,19 +15,75 @@
     .container {
       @apply(--app-desktop-width);
     }
+
+    .alert {
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    .alert-blue {
+      background: #66AEED;
+      color: #0D47A1;
+    }
+
+    .lead {
+      font-size: 1.5em;
+      line-height: 1.5em;
+      margin: 0 0 1em;
+      border-bottom: 1px #ccc solid;
+      padding: 0 0 0.5em;
+    }
+
+    .lead a {
+      color: var(--app-primary-color);
+    }
+
+    aside h2 {
+      font-size: 15px;
+      font-weight: 400;
+      color: #999;
+      text-transform: uppercase;
+    }
+
+
+    @media (min-width: 768px) {
+      .container {
+        @apply(--layout-horizontal);
+      }
+
+      .container .left {
+        @apply(--layout-flex-3);
+      }
+
+      .container aside {
+        @apply(--layout-flex);
+        margin-left: 18px;
+      }
+    }
   </style>
 
   <data-gigs-list gigs="{{gigs}}"></data-gigs-list>
 
   <div class="container">
-    <h1>Welcome to Polygigs</h1>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit impedit, tenetur nemo repellendus consectetur, beatae quas dolor molestias repudiandae velit iusto voluptatibus, aperiam mollitia magnam eaque hic, quos veritatis.</p>
+    <div class="left">
+      <p class="lead">
+        <b>Polygigs</b> is the best place for developers to find gigs where they can use the <a href="https://www.polymer-project.org/" target="_blank">Polymer framework</a> to build amazing things.
+      </p>
 
-    <template is="dom-repeat" items="{{gigs}}" as="gig">
-      <h1><a href="/gig/[[gig.id]]">[[gig.title]]</a></h1>
-    </template>
-  </div class="container">
+      <template is="dom-repeat" items="{{gigs}}" as="gig">
+        <h1><a href="/gig/[[gig.id]]">[[gig.title]]</a></h1>
+      </template>
+    </div>
+
+    <aside>
+      <section>
+        <h2>Sponsored By</h2>
+        <nl-quip></nl-quip>
+      </section>
+    </aside>
+
+  </div>
 
 </template>
 
