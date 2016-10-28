@@ -1,6 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 
 
 <dom-module id="nl-quip">
@@ -13,6 +14,14 @@
         height: 100px;
         width: 100%;
       };
+    }
+
+    paper-material {
+      background: #fff;
+    }
+
+    paper-button {
+      margin-left: -0.7em;
     }
 
     .nl-logo {
@@ -42,8 +51,10 @@
       <img height="125" src="src/components/nl-quip/nl-logo.png" srcset="src/components/nl-quip/nl-logo@2x.png 360w, src/components/nl-quip/nl-logo.png 180w">
     </div>
     <div class="description">
-      <h3>Need Polymer Developers?</h3>
-      <p>Our team includes developers who learned Polymer by building apps at Google.</p>
+      <h3>Work with some of the best.</h3>
+      <p>Our developers have worked with Google to develop Polymer applications.</p>
+
+      <paper-button >Visit Northern Logic</paper-button>
     </div>
   </paper-material>
   </a>
