@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/marked-element/marked-element.html">
 
+<link rel="import" href="../components/gig-detail.html">
 <link rel="import" href="../data/data-gig-detail.html">
 <link rel="import" href="../pg-icons.html">
 
@@ -24,44 +25,6 @@
       max-width: 700px;
     }
 
-    .gig-header {
-      margin: 0;
-    }
-
-    .gig-header h1 {
-      color: var(--app-secondary-color);
-    }
-
-    .gig-header .meta {
-      @apply(--layout-vertical);
-    }
-
-    .gig-header .meta > div {
-      @apply(--layout-horizontal);
-      @apply(--layout-center);
-      margin: 4px 0;
-    }
-
-    iron-icon {
-      margin-right: 4px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: var(--app-primary-color);
-      color: #fff;
-      padding: 4px 6px;
-      border-radius: 3px;
-      margin-left: 8px;
-    }
-
-    h2.vanity {
-      color: var(--app-primary-color);
-      font-family: 'Source Code Pro','Roboto Mono',Consolas,Menlo,monospace;
-      font-weight: normal;
-      margin-top: 1em;
-    }
-
     section {
 
     }
@@ -76,42 +39,7 @@
   <div class="container">
 
     <div class="gig-detail-container">
-      <header class="gig-header">
-        <h1>[[gig.title]]</h1>
-
-        <div class="meta">
-          <div class="location">
-            <iron-icon icon="polygigs:place"></iron-icon> [[gig.location]]
-            <template is="dom-if" if="[[gig.isRemote]]">
-              <div class="badge">Allows Remote</div>
-            </template>
-          </div>
-
-          <div>
-            <iron-icon icon="polygigs:business"></iron-icon>
-            <a href="[[gig.posterLink]]" title="Go to job company website">[[gig.posterCompany]]</a>
-          </div>
-
-          <div>
-            <iron-icon icon="polygigs:event"></iron-icon>
-            Posted [[_dateFormat(gig.datePosted)]]
-          </div>
-        </div>
-      </header>
-
-      <section>
-        <h2 class="vanity">&lt;gig-description&gt;</h2>
-        <marked-element markdown="[[gig.description]]">
-          <div class="markdown-html"></div>
-        </marked-element>
-      </section>
-
-      <section>
-        <h2 class="vanity">&lt;how-to-apply&gt;</h2>
-        <marked-element markdown="[[gig.howToApply]]">
-          <div class="markdown-html"></div>
-        </marked-element>
-      </section>
+      <gig-detail gig="[[gig]]"></gig-detail>
     </div>
 
 
