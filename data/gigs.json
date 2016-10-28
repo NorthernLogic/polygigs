@@ -1,15 +1,27 @@
 [
   {
-    "id": 100,
-    "title": "Front-End Web Developer",
-    "description": "We are looking for an enthusiastic front-end developer to join the team full-time. This position is for a mid-level Web Developer. Successful candidates must be able to implement custom web designs on a WordPress platform, as well as provide coded HTML and CSS for use on other platforms. This includes integration of 3rd party apps, such as Facebook and Twitter.\n\nOur ideal candidate is located in the **Memphis, TN** area. We are open to considering remote work for exceptional developers.\n\n### Skills & Requirements\nMust have experience:\n\n* WordPress theme development\n* PHP (general)\n* Responsive design\n* jQuery\n* CSS\n\nNice to have experience:\n\n* Object-oriented PHP\n* MySQL\n* Console (bash)\n* Version Control (Git)\n\nExhibit interpersonal skills, such as:\n* Excellent written and oral communication skills (English)\n* Attention to detail\n* The ability to work independently but, also work well within a team environment",
-    "location": "Memphis, TN",
-    "isRemote": true,
+    "id": "photoshelter-web-application-developer",
+    "title": "Web Application Developer",
+    "description": "PhotoShelter is a leader in photography portfolio websites, photo sales, marketing and archiving tools for photographers. We’re seeking a Web Application Developer to become an integral part of our team.\n\nWe offer a modern development ecosystem (Git, Node, Polymer/Web Components), and leverage it to offer the best technology to our customers. We are a team of talented engineers, with a relaxed, friendly work environment on Union Square, and a commitment to professional development. We’d like you to join us in building innovative, high-quality products.\n\n## Skills needed:\n\n* Mastery of front-end web technologies (HTML5, CSS, Javascript)\n* Experience writing single page apps.\n* cross browser compatibility, including mobile browsers (e.g. iOS)\n* Ability to gather requirements and design, code and test independently.\n* Ability to work effectively and efficiently in a team-oriented environment.\n\n## Strong pluses:\n\n* Strong understanding of programming concepts such as OOP, memory management, data types, control flow and abstraction.\n* Knowledge of server-side technologies (PHP, Apache, PostgreSQL, Memcached).\n* Comfort working in a UNIX-based environment (e.g. Linux)\n* Love of photography a plus.\n\nRequirements:\n\n* At least 3 years experience developing advanced web applications in a scalable production enviroment.\n* BS in engineering/science highly desirable.\n* All candidates will be given a programming test to assess skill level.",
+    "location": "New York City, NY, USA",
+    "isRemote": false,
     "datePosted": "2016-10-24T13:15:40.921Z",
     "dateExpires": null,
     "isActive": true,
-    "howToApply": "To apply to our position, please send your resume and GitHub link to [resumes@example.com](mailto:resumes@example.com).",
-    "posterCompany": "Franklin Consulting",
-    "posterLink": "http://example.com"
+    "howToApply": "Please submit a resume and cover letter to [jobs@photoshelter.com](mailto:jobs@photoshelter.com). Must be willing to work in our New York City office.",
+    "posterCompany": "Photoshelter",
+    "posterLink": "http://www.photoshelter.com"
+  },
+  {
+    "id": "medigo-senior-front-end-developer",
+    "title": "Senior Front End Developer",
+    "description": "**Headquartered in Berlin, MEDIGO is a curated marketplace that simplifies the complex process of booking medical travel. We facilitate the searching, booking and arranging of treatment abroad, offering personal assistance along every step of the way. MEDIGO helps patients who desire affordable treatment, access to higher quality facilities and doctors, or who want to cut waiting times, through over 600 health-providers in 24 countries. MEDIGO is supported by leading VCs such as Accel Partners, and employs an international team of 45+ people from 30 nationalities.**\n\nFor a permanent position to be filled as early as possible and located in Berlin, we are looking for a Senior Front End Developer (m/f).\n\n> “Whatever good things we build end up building us.” – Jim Rohn\n\n## Your Profile\n\n* You have studied a technical field or have considerable experience with programming and web technology\n* You have worked for two or three companies, have at least 3 years of work experience, and a healthy startup attitude\n* You can operate and enhance a deployment/CI pipeline\n* You have experience in building responsive and performant web front ends with\n* When building software you aim for understanding, functionality and simplicity\n* While focused on cutting edge front-end technologies, you are comfortable on both ends of “the pipe”, e.g. knowing how different data-structures scale, how to avoid single points of failure or what makes an elegant API\n* You are open minded, take pride in your work and, and above all, you value result-driven team work\n\n## Our Team & Stack\n\n* Polymer, Go\n* HAProxy, Postgres, MySQL, Solr, Redis\n* API-first, Service-oriented architecture\n* unit-& integration-testing, everybody-is-devops\n* Gulp, Docker, Jenkins / circle-ci\n* Loggly, Datadog, Victorops, Slack\n* We love open source and we give back whenever we can\n* We subscribe to the principles of Calm Technology and you can check out our core values\n\n## Your Tasks\n\n* Help steer an iterative process to transform MEDIGO into a highly reactive “web 3.0” site\n* Use the best selection of CSS & JS patterns/frameworks\n* Work with our UX- and UI-Designers to build seamless interactions and “user delight”\n* Tune and extend our front end stack with a healthy balance of new features and performance increases\n* Support our automatization processes\n* Train and teach others about the fine arts of year 2015 Browser tech\n* Extend a world class docker based development pipeline\n\n## Our Offer\n\n* Be part of an innovative, international company which is passionate about disrupting the medical travel industry\n* Solid investment and support from well-known VC's who have backed companies such as Facebook, Spotify, Groupon, and Slack\n* Develop your skills within an ambitious, professional, and supportive team, in a company where independent-thinking and responsibility are encouraged\n* Enjoy a modern, light and spacious office loft (with a 100m2 rooftop terrace!) in Berlin-Mitte. Join us for knowledge-sharing workshops, free German classes, sports activities, and regular team events",
+    "location": "Berlin, Germany",
+    "isRemote": false,
+    "datePosted": "2016-10-25T13:15:40.921Z",
+    "isActive": true,
+    "howToApply": "To apply please fill out the [application on our careers website](https://www.medigo.com/en/careers?gh_jid=259002).",
+    "posterCompany": "Medigo",
+    "posterLink": "https://www.medigo.com"
   }
 ]
