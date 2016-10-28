@@ -1,0 +1,69 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../pg-icons.html">
+
+
+<dom-module id="gig-listing">
+<template>
+  <style>
+    :host {
+      display: block;
+      border-bottom: 1px #ccc solid;
+    }
+
+    :host(:hover) {
+      background: white;
+    }
+
+    a {
+      @apply(--layout-horizontal);
+      @apply(--layout-center);
+      @apply(--layout-justified);
+      height: 44px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .company-name {
+      font-weight: bold;
+      margin-right: 16px;
+    }
+
+    .gig-title {
+      @apply(--layout-flex);
+    }
+
+  </style>
+
+  <a href="[[_gigUrl(gig.id)]]" title="See gig description">
+    <div class="company-name">[[gig.posterCompany]]</div>
+    <div class="gig-title">[[gig.title]]</div>
+    <div class="gig-date">[[_dateFormat(gig.datePosted)]]</div>
+  </a>
+
+</template>
+
+<script>
+  Polymer({
+
+    is: 'gig-listing',
+
+    properties: {
+      gig: {
+        type: Object
+      }
+    },
+
+    _gigUrl: function(gigId) {
+      return '/gig/' + gigId;
+    },
+
+    _dateFormat: function(date) {
+      return new Date(date).toLocaleDateString();
+    },
+
+  });
+</script>
+</dom-module>

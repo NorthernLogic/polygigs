@@ -2,6 +2,7 @@
 
 <link rel="import" href="../data/data-gigs-list.html">
 <link rel="import" href="../components/nl-quip/nl-quip.html">
+<link rel="import" href="../components/gig-listing.html">
 
 
 <dom-module id="pg-front-page">
@@ -72,7 +73,7 @@
       </p>
 
       <template is="dom-repeat" items="{{gigs}}" as="gig">
-        <h1><a href="/gig/[[gig.id]]">[[gig.title]]</a></h1>
+        <gig-listing gig="[[gig]]"></gig-listing>
       </template>
     </div>
 
