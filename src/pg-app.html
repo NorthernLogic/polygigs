@@ -99,6 +99,16 @@
 
     _routePageChanged: function(page) {
       this.page = page || 'front';
+
+      // If Google Analytics is available, send a pageview since the page has changed.
+      if (window.ga) {
+        var config = {
+          page: this.route.prefix + this.route.path,
+        };
+
+        ga('set', config);
+        ga('send', 'pageview');
+      }
     },
 
     _pageChanged: function(page) {
