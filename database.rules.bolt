@@ -1,0 +1,10 @@
+
+path / {
+  read() { false }
+  write() { false }
+}
+
+path /gigs {
+  read() { true }
+  write() { false }
+}

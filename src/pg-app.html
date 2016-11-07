@@ -9,6 +9,9 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
 
 <link rel="import" href="pg-header.html">
 <link rel="import" href="pg-footer.html">
@@ -34,6 +37,11 @@
   <app-location route="{{route}}"></app-location>
   <app-route route="{{route}}"
     pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+  <firebase-app name="polygigs" auth-domain="polygigs.firebaseapp.com"
+    database-url="https://polygigs.firebaseio.com"
+    api-key="AIzaSyBm1GrVaQ34YBIdQk4x84mwWMN6plzWy4g">
+  </firebase-app>
 
   <app-drawer-layout drawer-width="288px" force-narrow fullbleed>
 

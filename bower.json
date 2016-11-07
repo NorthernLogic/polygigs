@@ -12,7 +12,8 @@
     "marked-element": "PolymerElements/marked-element#^1.2.0",
     "iron-icon": "PolymerElements/iron-icon#^1.0.12",
     "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^1.1.0",
-    "paper-material": "PolymerElements/paper-material#^1.0.6"
+    "paper-material": "PolymerElements/paper-material#^1.0.6",
+    "polymerfire": "Firebase/polymerfire#^0.10.2"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

@@ -64,11 +64,12 @@
         }
       })();
 
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/service-worker.js');
-        });
-      }
+      // Ignore Service Worker for now until I figure out the Firebase /__/ problem.
+      // if ('serviceWorker' in navigator) {
+      //   window.addEventListener('load', function() {
+      //     navigator.serviceWorker.register('/service-worker.js');
+      //   });
+      // }
     </script>
 
     <link rel="import" href="/src/pg-app.html">

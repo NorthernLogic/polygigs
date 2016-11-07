@@ -1,14 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
 
 
 <dom-module id="data-gigs-list">
 <template>
-  <iron-ajax auto
-    url="/data/gigs.json"
-    handle-as="json"
-    on-response="_onResponse"></iron-ajax>
+  <firebase-query app-name="polygigs"
+    path="/gigs" data="{{gigs}}"></firebase-query>
 </template>
 
 <script>
@@ -19,13 +17,8 @@
     properties: {
       gigs: {
         type: Array,
-        notify: true,
-        readOnly: true
+        notify: true
       }
-    },
-
-    _onResponse: function(event, request) {
-      this._setGigs(request.response);
     }
 
   });
