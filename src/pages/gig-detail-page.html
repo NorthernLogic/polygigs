@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/marked-element/marked-element.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
 
 <link rel="import" href="../components/gig-detail.html">
 <link rel="import" href="../data/data-gig-detail.html">
@@ -19,6 +20,18 @@
 
     .container {
       @apply(--app-desktop-width);
+      min-height: 320px;
+    }
+
+    .spinner {
+      text-align: center;
+      padding: 128px 0;
+    }
+
+    paper-spinner {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto;
     }
   </style>
 
@@ -26,11 +39,13 @@
     pattern="/:gigId" data="{{routeData}}"></app-route>
   <data-gig-detail gig-id="[[gigId]]" gig="{{gig}}"></data-gig-detail>
 
-  <!-- TODO(zjones) Add spinner for RAIL -->
-
   <div class="container">
 
-    <div class="gig-detail-container">
+    <div class="spinner" hidden$="[[!loading]]">
+      <paper-spinner active="[[loading]]"></paper-spinner>
+    </div>
+
+    <div class="gig-detail-container" hidden$="[[!gig]]">
       <gig-detail gig="[[gig]]"></gig-detail>
     </div>
 
@@ -45,17 +60,38 @@
     is: 'pg-gig-detail-page',
 
     properties: {
+      loading: {
+        type: Boolean,
+        value: false
+      },
       route: {
         type: String
       },
       gigId: {
         type: String
+      },
+      gig: {
+        type: Object,
+        observer: '_gigChanged'
       }
     },
 
     observers: [
       '_routeGigIdChanged(routeData.gigId)'
     ],
+
+    ready: function() {
+      // Only show the spinner if the gig isn't available within half a second.
+      // Most people won't even see it.
+      this.railLoadTimeout = this.async(function() {
+        this.loading = true;
+      }, 500);
+    },
+
+    _gigChanged: function(newValue) {
+      this.cancelAsync(this.railLoadTimeout);
+      this.loading = false;
+    },
 
     _routeGigIdChanged: function(gigId) {
       this.gigId = gigId;
