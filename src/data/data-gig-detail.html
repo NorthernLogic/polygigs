@@ -5,8 +5,8 @@
 
 <dom-module id="data-gig-detail">
 <template>
-  <firebase-document app-name="polygigs"
-    path="/gigs/[[gigId]]" data="{{gig}}"></firebase-document>
+  <firebase-document id="document" app-name="polygigs"
+    path="/gigs/[[gigId]]" data="{{raw}}"></firebase-document>
 </template>
 
 <script>
@@ -19,11 +19,24 @@
         type: String
       },
 
+      raw: {
+        type: Object,
+        observer: '_rawChanged'
+      },
+
       gig: {
         type: Object,
         notify: true
       }
+    },
+
+    _rawChanged: function(newValue) {
+      // Only set `gig` if there's actually a value there.
+      if (!this.$.document.valueIsEmpty(newValue)) {
+        this.set('gig', newValue);
+      }
     }
+
   });
 </script>
 </dom-module>
