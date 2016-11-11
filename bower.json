@@ -13,7 +13,8 @@
     "iron-icon": "PolymerElements/iron-icon#^1.0.12",
     "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^1.1.0",
     "paper-material": "PolymerElements/paper-material#^1.0.6",
-    "polymerfire": "Firebase/polymerfire#^0.10.2"
+    "polymerfire": "Firebase/polymerfire#^0.10.2",
+    "paper-spinner": "PolymerElements/paper-spinner#^1.2.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

@@ -53,44 +53,46 @@
 
   </style>
 
-  <div class="gig-detail">
-    <header class="gig-header">
-      <h1>[[gig.title]]</h1>
+  <template is="dom-if" if="[[gig]]">
+    <div class="gig-detail">
+      <header class="gig-header">
+        <h1>[[gig.title]]</h1>
 
-      <div class="meta">
-        <div class="location">
-          <iron-icon icon="polygigs:place"></iron-icon> [[gig.location]]
-          <template is="dom-if" if="[[gig.isRemote]]">
-            <div class="badge">Allows Remote</div>
-          </template>
+        <div class="meta">
+          <div class="location">
+            <iron-icon icon="polygigs:place"></iron-icon> [[gig.location]]
+            <template is="dom-if" if="[[gig.isRemote]]">
+              <div class="badge">Allows Remote</div>
+            </template>
+          </div>
+
+          <div>
+            <iron-icon icon="polygigs:business"></iron-icon>
+            <a href="[[gig.posterLink]]" title="Go to job company website">[[gig.posterCompany]]</a>
+          </div>
+
+          <div>
+            <iron-icon icon="polygigs:event"></iron-icon>
+            Posted [[_dateFormat(gig.datePosted)]]
+          </div>
         </div>
+      </header>
 
-        <div>
-          <iron-icon icon="polygigs:business"></iron-icon>
-          <a href="[[gig.posterLink]]" title="Go to job company website">[[gig.posterCompany]]</a>
-        </div>
+      <section>
+        <h2 class="vanity">&lt;gig-description&gt;</h2>
+        <marked-element markdown="[[gig.description]]">
+          <div class="markdown-html"></div>
+        </marked-element>
+      </section>
 
-        <div>
-          <iron-icon icon="polygigs:event"></iron-icon>
-          Posted [[_dateFormat(gig.datePosted)]]
-        </div>
-      </div>
-    </header>
-
-    <section>
-      <h2 class="vanity">&lt;gig-description&gt;</h2>
-      <marked-element markdown="[[gig.description]]">
-        <div class="markdown-html"></div>
-      </marked-element>
-    </section>
-
-    <section>
-      <h2 class="vanity">&lt;how-to-apply&gt;</h2>
-      <marked-element markdown="[[gig.howToApply]]">
-        <div class="markdown-html"></div>
-      </marked-element>
-    </section>
-  </div>
+      <section>
+        <h2 class="vanity">&lt;how-to-apply&gt;</h2>
+        <marked-element markdown="[[gig.howToApply]]">
+          <div class="markdown-html"></div>
+        </marked-element>
+      </section>
+    </div>
+  </template>
 
 </template>
 
