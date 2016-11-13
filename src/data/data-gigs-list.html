@@ -6,6 +6,8 @@
 <dom-module id="data-gigs-list">
 <template>
   <firebase-query app-name="polygigs"
+    order-by-child="isActive"
+    equal-to="true"
     path="/gigs" data="{{gigs}}"></firebase-query>
 </template>
 
