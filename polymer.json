@@ -9,7 +9,6 @@
   ],
   "includeDependencies": [
     "manifest.json",
-    "data/gigs.json",
     "bower_components/webcomponentsjs/webcomponents-lite.min.js"
   ]
 }
