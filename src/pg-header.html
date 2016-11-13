@@ -56,6 +56,12 @@
       background: white;
       color: black;
     }
+
+    @media (max-width: 540px) {
+      .tagline {
+        display: none;
+      }
+    }
   </style>
 
   <app-toolbar>
@@ -68,9 +74,9 @@
         <span class="tagline">The unofficial Polymer job board.</span>
       </div>
 
-      <!--<a href="/gig-post">
+      <a href="/post-gig/" hidden$="[[routePageIs(routeData, 'post-gig')]]">
         <paper-button>Post a Gig</paper-button>
-      </a>-->
+      </a>
     </div>
   </app-toolbar>
 
@@ -79,7 +85,17 @@
 <script>
   Polymer({
 
-    is: 'pg-header'
+    is: 'pg-header',
+
+    properties: {
+      routeData: {
+        type: Object
+      }
+    },
+
+    routePageIs: function(routeData, page) {
+      return routeData.page === page;
+    }
 
   });
 </script>
