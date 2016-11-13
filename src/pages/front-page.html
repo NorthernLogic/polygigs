@@ -1,8 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<link rel="import" href="../data/data-gigs-list.html">
-<link rel="import" href="../components/nl-quip/nl-quip.html">
 <link rel="import" href="../components/gig-listing.html">
+<link rel="import" href="../components/loading-container.html">
+<link rel="import" href="../components/nl-quip/nl-quip.html">
+<link rel="import" href="../data/data-gigs-list.html">
 
 
 <dom-module id="pg-front-page">
@@ -71,6 +72,8 @@
         <b>Polygigs</b> is the best place for developers to find gigs where they can use the <a href="https://www.polymer-project.org/" target="_blank">Polymer framework</a> to build amazing things.
       </p>
 
+      <loading-container active="[[isLoading]]" message="Loading gigs..."></loading-container>
+
       <template is="dom-repeat" items="{{gigs}}" as="gig">
         <gig-listing gig="[[gig]]"></gig-listing>
       </template>
@@ -96,8 +99,25 @@
 
     properties: {
       gigs: {
-        type: Array
-      }
+        type: Array,
+        observer: '_gigsChanged'
+      },
+
+      isLoading: {
+        type: Boolean,
+        value: false
+      },
+    },
+
+    attached: function() {
+      this.railLoadTimeout = this.async(function() {
+        this.isLoading = true;
+      }, 500);
+    },
+
+    _gigsChanged: function() {
+      this.cancelAsync(this.railLoadTimeout);
+      this.isLoading = false;
     }
 
   });
