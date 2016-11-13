@@ -85,7 +85,17 @@
 <script>
   Polymer({
 
-    is: 'pg-header'
+    is: 'pg-header',
+
+    properties: {
+      routeData: {
+        type: Object
+      }
+    },
+
+    routePageIs: function(routeData, page) {
+      return routeData.page === page;
+    }
 
   });
 </script>
