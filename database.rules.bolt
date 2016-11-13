@@ -5,6 +5,9 @@ path / {
 }
 
 path /gigs {
+  index() {[
+    "isActive"
+  ]}
   read() { true }
   write() { false }
 }
