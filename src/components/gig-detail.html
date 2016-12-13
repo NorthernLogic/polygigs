@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/marked-element/marked-element.html">
 
 <link rel="import" href="../pg-icons.html">
+<link rel="import" href="./meta-description.html">
 
 
 <dom-module id="gig-detail">
@@ -54,6 +55,7 @@
   </style>
 
   <template is="dom-if" if="[[gig]]">
+    <meta-description description="[[gig.posterCompany]] in [[gig.location]] is hiring for [[gig.title]]"></meta-description>
     <div class="gig-detail">
       <header class="gig-header">
         <h1>[[gig.title]]</h1>
