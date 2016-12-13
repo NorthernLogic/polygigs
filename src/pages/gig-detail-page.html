@@ -8,6 +8,7 @@
 <link rel="import" href="../components/gig-detail.html">
 <link rel="import" href="../data/data-gig-detail.html">
 <link rel="import" href="../pg-icons.html">
+<link rel="import" href="../components/social-meta.html">
 
 
 <dom-module id="pg-gig-detail-page">
@@ -39,6 +40,10 @@
     pattern="/:gigId" data="{{routeData}}"></app-route>
   <data-gig-detail gig-id="[[gigId]]" gig="{{gig}}"></data-gig-detail>
 
+  <template is="dom-if" if="[[gig]]">
+    <social-meta title="[[gig.title]] job at [[gig.posterCompany]] - Polygigs" content="[[gig.posterCompany]] in [[gig.location]] is hiring for [[gig.title]]"></social-meta>
+  </template>
+
   <div class="container">
 
     <div class="spinner" hidden$="[[!loading]]">
@@ -48,7 +53,6 @@
     <div class="gig-detail-container" hidden$="[[!gig]]">
       <gig-detail gig="[[gig]]"></gig-detail>
     </div>
-
 
   </div>
 

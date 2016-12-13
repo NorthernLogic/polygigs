@@ -4,8 +4,6 @@
 <link rel="import" href="../../bower_components/marked-element/marked-element.html">
 
 <link rel="import" href="../pg-icons.html">
-<link rel="import" href="./dynamic-meta.html">
-
 
 <dom-module id="gig-detail">
 <template>
@@ -55,13 +53,6 @@
   </style>
 
   <template is="dom-if" if="[[gig]]">
-    <dynamic-meta id-key="name" id-value="description" content="[[gig.posterCompany]] in [[gig.location]] is hiring for [[gig.title]]"></dynamic-meta>
-    <dynamic-meta id-key="property" id-value="og:description" content="[[gig.posterCompany]] in [[gig.location]] is hiring for [[gig.title]]"></dynamic-meta>
-    <dynamic-meta id-key="name" id-value="twitter:description" content="[[gig.posterCompany]] in [[gig.location]] is hiring for [[gig.title]]"></dynamic-meta>
-
-    <dynamic-meta id-key="property" id-value="og:title" content="[[gig.title]] job at [[gig.posterCompany]] - Polygigs"></dynamic-meta>
-    <dynamic-meta id-key="name" id-value="twitter:title" content="[[gig.title]] job at [[gig.posterCompany]] - Polygigs"></dynamic-meta
-    >
     <div class="gig-detail">
       <header class="gig-header">
         <h1>[[gig.title]]</h1>

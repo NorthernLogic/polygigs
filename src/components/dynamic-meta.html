@@ -26,11 +26,12 @@
 
       if (!metaTag) {
         metaTag = document.createElement('meta');
+        metaTag.setAttribute(this.idKey, this.idValue);
         document.head.appendChild(metaTag);
       }
 
       metaTag.content = content;
-    }
+    },
   });
 </script>
 </dom-module>
