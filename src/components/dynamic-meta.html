@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
+<dom-module id="dynamic-meta">
+<script>
+  Polymer({
+    is: 'dynamic-meta',
+
+    properties: {
+      idKey: {
+        type: String,
+        value: 'name'
+      },
+      idValue: {
+        type: String,
+        value: 'description'
+      },
+      content: {
+        type: String,
+        observer: '_updateMeta',
+      },
+    },
+
+    _updateMeta: function(content) {
+      var metaTag = document.head.querySelector('meta[' + this.idKey + '="' + this.idValue + '"]');
+
+      if (!metaTag) {
+        metaTag = document.createElement('meta');
+        metaTag.setAttribute(this.idKey, this.idValue);
+        document.head.appendChild(metaTag);
+      }
+
+      metaTag.content = content;
+    },
+  });
+</script>
+</dom-module>

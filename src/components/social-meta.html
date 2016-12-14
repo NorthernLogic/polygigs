@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="./dynamic-meta.html">
+
+
+<dom-module id="social-meta">
+<template>
+  <dynamic-meta id-key="property" id-value="og:title" content="[[title]]"></dynamic-meta>
+  <dynamic-meta id-key="name" id-value="twitter:title" content="[[title]]"></dynamic-meta>
+
+  <dynamic-meta id-key="name" id-value="description" content="[[content]]"></dynamic-meta>
+  <dynamic-meta id-key="property" id-value="og:description" content="[[content]]"></dynamic-meta>
+  <dynamic-meta id-key="name" id-value="twitter:description" content="[[content]]"></dynamic-meta>
+</template>
+<script>
+  Polymer({
+    is: 'social-meta',
+
+    properties: {
+      title: {
+        type: String,
+      },
+      content: {
+        type: String,
+      },
+    },
+  });
+</script>
+</dom-module>
