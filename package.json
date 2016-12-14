@@ -1,0 +1,27 @@
+{
+  "name": "polygigs",
+  "version": "1.0.0",
+  "description": "A website for Polymer developers and employers to find each other.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NorthernLogic/polygigs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NorthernLogic/polygigs/issues"
+  },
+  "homepage": "https://github.com/NorthernLogic/polygigs#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "node-fetch": "^1.6.3",
+    "sitemap": "^1.8.2"
+  }
+}
