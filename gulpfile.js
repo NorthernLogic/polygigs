@@ -40,11 +40,7 @@ function generateSitemap(gigs) {
   }).toString();
 }
 
-function writeSitemap(data, cb) {
-  ;
-}
-
-gulp.task('sitemap', [], cb => {
+gulp.task('sitemap', cb => {
   getGigs()
     .then(generateSitemap)
     .then(sitemap => fs.writeFile(SITEMAP_PATH, sitemap, cb));
