@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "yarn && bower install && gulp sitemap -prod && polymer build && firebase deploy"
+    "deps": "yarn && bower install",
+    "deploy": "npm run deps && polymer build && firebase deploy"
   },
   "repository": {
     "type": "git",
