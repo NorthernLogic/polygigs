@@ -8,12 +8,19 @@ const SITEMAP_PATH = `${IS_DEV ? '.' : '/var/www/polygigs/build/bundled'}/sitema
 
 function getGigs() {
   return fetch('https://polygigs.firebaseio.com/gigs.json')
-    .then(res => res.json());
+    .then(res => res.json())
+    // convert to array of [path, value]
+    .then(json => Object.entries(json));
+}
+
+function getActiveGigs() {
+  return getGigs()
+    .then(gigs => gigs.filter(([path, gig]) => gig.isActive));
 }
 
 function getMostRecentUpdateDateTime(gigs) {
-  return Object.keys(gigs)
-    .map(path => gigs[path].datePosted)
+  return gigs
+    .map(([path, gig]) => gig.datePosted)
     .reduce(
       (maxDate, currDate) => maxDate === null || currDate > maxDate ? currDate : maxDate,
       null
@@ -21,9 +28,8 @@ function getMostRecentUpdateDateTime(gigs) {
 }
 
 function generateSitemap(gigs) {
-  const urls = Object.keys(gigs)
-    .reduce((acc, path) => {
-        const gig = gigs[path];
+  const urls = gigs
+    .reduce((acc, [path, gig]) => {
         const url = { url: `gig/${path}/`, changefreq: 'weekly', lastmodISO: gig.datePosted }
         return acc.concat(url);
       },
@@ -41,7 +47,7 @@ function generateSitemap(gigs) {
 }
 
 gulp.task('sitemap', cb => {
-  getGigs()
+  getActiveGigs()
     .then(generateSitemap)
     .then(sitemap => fs.writeFile(SITEMAP_PATH, sitemap, cb));
 });
