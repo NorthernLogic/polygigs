@@ -8,7 +8,7 @@
   <firebase-query app-name="polygigs"
     order-by-child="isActive"
     equal-to="true"
-    path="/gigs" data="{{gigs}}"></firebase-query>
+    path="/gigs" data="{{gigsResult}}"></firebase-query>
 </template>
 
 <script>
@@ -20,7 +20,23 @@
       gigs: {
         type: Array,
         notify: true
-      }
+      },
+    },
+
+    observers: [
+      '_processGigs(gigsResult.splices)',
+    ],
+
+    _processGigs: function(mutations) {
+      this.gigs = this.gigsResult.slice().sort(this._sortGigs).reverse();
+    },
+
+    _sortGigs: function compare(a,b) {
+      if (a.datePosted < b.datePosted)
+        return -1;
+      if (a.datePosted > b.datePosted)
+        return 1;
+      return 0;
     }
 
   });
