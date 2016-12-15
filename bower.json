@@ -14,7 +14,8 @@
     "paper-material": "PolymerElements/paper-material#^1.0.6",
     "paper-spinner": "PolymerElements/paper-spinner#^1.2.1",
     "polymer": "Polymer/polymer#^1.4.0",
-    "polymerfire": "Firebase/polymerfire#^0.10.2"
+    "polymerfire": "Firebase/polymerfire#^0.10.2",
+    "page-title": "^1.2.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
