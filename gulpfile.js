@@ -3,9 +3,6 @@ const fetch = require('node-fetch');
 const sitemap = require('sitemap');
 const fs = require('fs');
 
-const IS_DEV = !process.argv.includes('-prod');
-const SITEMAP_PATH = `${IS_DEV ? '.' : '/var/www/polygigs/build/bundled'}/sitemap.xml`;
-
 function getGigs() {
   return fetch('https://polygigs.firebaseio.com/gigs.json')
     .then(res => res.json())
@@ -49,5 +46,5 @@ function generateSitemap(gigs) {
 gulp.task('sitemap', cb => {
   getActiveGigs()
     .then(generateSitemap)
-    .then(sitemap => fs.writeFile(SITEMAP_PATH, sitemap, cb));
+    .then(sitemap => fs.writeFile('./sitemap.xml', sitemap, cb));
 });

@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/page-title/page-title.html">
 
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -42,6 +43,7 @@
 
   <template is="dom-if" if="[[gig]]">
     <social-meta title="[[gig.title]] job at [[gig.posterCompany]] - Polygigs" content="[[gig.posterCompany]] in [[gig.location]] is hiring for [[gig.title]]"></social-meta>
+    <page-title base-title="Polygigs" title="[[gig.title]] job at [[gig.posterCompany]]" direction="reversed"></page-title>
   </template>
 
   <div class="container">
