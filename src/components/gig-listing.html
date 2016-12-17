@@ -19,9 +19,9 @@
 
     a {
       @apply(--layout-horizontal);
-      @apply(--layout-center);
-      @apply(--layout-justified);
-      height: 44px;
+      @apply(--layout-wrap);
+      min-height: 44px;
+      margin-bottom: 8px;
       color: inherit;
       text-decoration: none;
     }
@@ -33,6 +33,21 @@
 
     .gig-title {
       @apply(--layout-flex);
+    }
+
+    .gig-title, .company-name, .gig-date {
+      flex-basis: 100%;
+    }
+
+    @media only screen and (min-width: 768px) {
+      a {
+        @apply(--layout-center);
+        @apply(--layout-justified);
+      }
+
+      .gig-title, .company-name, .gig-date {
+        flex-basis: auto;
+      }
     }
 
   </style>
