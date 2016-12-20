@@ -4,8 +4,8 @@
 
 <dom-module id="social-meta">
 <template>
-  <dynamic-meta id-key="property" id-value="og:title" content="[[title]]"></dynamic-meta>
-  <dynamic-meta id-key="name" id-value="twitter:title" content="[[title]]"></dynamic-meta>
+  <dynamic-meta id-key="property" id-value="og:title" content="[[pageTitle]]"></dynamic-meta>
+  <dynamic-meta id-key="name" id-value="twitter:title" content="[[pageTitle]]"></dynamic-meta>
 
   <dynamic-meta id-key="name" id-value="description" content="[[content]]"></dynamic-meta>
   <dynamic-meta id-key="property" id-value="og:description" content="[[content]]"></dynamic-meta>
@@ -16,7 +16,7 @@
     is: 'social-meta',
 
     properties: {
-      title: {
+      pageTitle: {
         type: String,
       },
       content: {
