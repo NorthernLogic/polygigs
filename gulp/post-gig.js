@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const slug = require('slug')
 
 const questions = [
   {
@@ -48,4 +49,9 @@ module.exports = () =>
       datePosted: (new Date()).toISOString(),
     }
   ))
-  .then(answers => console.log(answers));
+  .then(answers => {
+    console.log('suggested url:', slug(answers.title).toLowerCase());
+    console.log('\n---\n');
+    console.log(answers);
+    console.log('\n');
+  });

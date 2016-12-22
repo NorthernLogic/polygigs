@@ -26,6 +26,7 @@
     "gulp-prompt": "^0.2.0",
     "inquirer": "^2.0.0",
     "node-fetch": "^1.6.3",
-    "sitemap": "^1.8.2"
+    "sitemap": "^1.8.2",
+    "slug": "^0.9.1"
   }
 }
