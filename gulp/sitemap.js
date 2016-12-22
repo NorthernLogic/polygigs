@@ -1,3 +1,4 @@
+const gulp = require('gulp');
 const fetch = require('node-fetch');
 const sitemap = require('sitemap');
 const fs = require('fs');
@@ -42,8 +43,8 @@ function generateSitemap(gigs) {
   }).toString();
 }
 
-gulp.task('sitemap', cb => {
+module.exports = cb => {
   getActiveGigs()
     .then(generateSitemap)
     .then(sitemap => fs.writeFile('./sitemap.xml', sitemap, cb));
-});
+}
