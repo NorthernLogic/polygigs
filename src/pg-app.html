@@ -12,6 +12,7 @@
 <link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-query.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-messaging.html">
 
 <link rel="import" href="pg-header.html">
 <link rel="import" href="pg-footer.html">
@@ -39,9 +40,16 @@
     pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
   <firebase-app name="polygigs" auth-domain="polygigs.firebaseapp.com"
+    messaging-sender-id="749332383903"
     database-url="https://polygigs.firebaseio.com"
     api-key="AIzaSyBm1GrVaQ34YBIdQk4x84mwWMN6plzWy4g">
   </firebase-app>
+
+  <firebase-messaging id="messaging"
+    app-name="polygigs"
+    token="{{token}}"
+    custom-sw="true">
+  </firebase-messaging>
 
   <app-drawer-layout drawer-width="288px" force-narrow fullbleed>
 
@@ -95,6 +103,27 @@
         type: String,
         reflectToAttribute: true,
         observer: '_pageChanged'
+      }
+    },
+
+    ready: function() {
+      var messaging = this.$.messaging;
+
+      messaging.addEventListener('token-changed', function() {
+        console.log(messaging.token);
+      });
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(function(registration) {
+            console.log(1, registration);
+            messaging.activate(registration);
+          })
+          .then(function() {
+            return messaging.requestPermission();
+          }, function(err) {
+            console.log('error', err);
+          });
       }
     },
 
