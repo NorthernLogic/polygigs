@@ -11,3 +11,14 @@ path /gigs {
   read() { true }
   write() { false }
 }
+
+path /notificationRegistrations {
+  index() {[
+    "registered"
+  ]}
+}
+
+path /notificationRegistrations/{id} {
+  read() { false }
+  write() { prior(this) == null }
+}

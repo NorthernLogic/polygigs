@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/NorthernLogic/polygigs#readme",
   "dependencies": {
+    "firebase-admin": "^4.0.4",
     "gulp": "^3.9.1",
     "gulp-prompt": "^0.2.0",
     "inquirer": "^2.0.0",
