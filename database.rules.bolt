@@ -19,7 +19,12 @@ path /notificationRegistrations {
   ]}
 }
 
-path /notificationRegistrations/{id} {
+path /notificationRegistrations/{id} is NotificationRegistration {
   read() { false }
   write() { prior(this) == null }
+}
+
+type NotificationRegistration {
+  registered: Boolean,
+  dateRegistered: String,
 }
