@@ -51,7 +51,7 @@
     custom-sw="true">
   </firebase-messaging>
 
-  <firebase-document
+  <firebase-document id="notificationRegistration"
     app-name="polygigs"
     path="/notificationRegistrations/{{token}}"
     data="{{notificationRegistration}}">
@@ -117,14 +117,21 @@
 
     ready: function() {
       var messaging = this.$.messaging;
+      var notificationRegistration = this.$.notificationRegistration;
+
       var self = this;
+
       messaging.addEventListener('token-changed', function() {
-        if (!self.notificationRegistration) {
-          self.notificationRegistration = {
-            registered: true,
-            dateRegistered: (new Date()).toISOString(),
-          }
-        }
+        notificationRegistration.addEventListener('data-changed', function() {
+          notificationRegistration.async(function() {
+            if (typeof self.notificationRegistration.registered === 'undefined') {
+              self.notificationRegistration = {
+                registered: false,
+                dateRegistered: (new Date()).toISOString(),
+              }
+            }
+          });
+        });
       });
 
       if ('serviceWorker' in navigator) {

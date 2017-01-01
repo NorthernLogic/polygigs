@@ -4,7 +4,7 @@ const _ = require('lodash');
 const firebase = require('./firebase-init');
 const topicName = 'gig-notification';
 
-function sendNotification(key, gig) {
+function sendNotification(key, gig, delay) {
   var options = {
     uri: 'https://fcm.googleapis.com/fcm/send',
     method: 'POST',
@@ -23,24 +23,32 @@ function sendNotification(key, gig) {
   };
 
   return new Promise((resolve, reject) => {
-    request(options, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        resolve();
-      } else {
-        reject(body);
-      }
-    });
+    setTimeout(() => {
+      request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log(body)
+          resolve()
+        } else {
+          reject(body)
+        }
+      });
+    }, delay);
   })
 }
 
 function sendNotifications(gigs) {
-  return Promise.all(_.map(gigs, (gig, key) => sendNotification(key, gig)));
+  let count = 0;
+  return Promise.all(_.map(gigs, (gig, key) => {
+    const delay = count * 5000;
+    count += 1;
+    return sendNotification(key, gig, delay);
+  }));
 }
 
 function updateGigNotificationFlag(gigs) {
   const db = firebase.openDatabase();
   const updatedGigs = _.mapValues(gigs, (gig, path) =>
-    Object.assign({ dateNotificationSent: !(new Date()).toISOString() }, gig)
+    Object.assign({}, gig, { dateNotificationSent: (new Date()).toISOString() })
   );
 
   return new Promise(resolve => db.ref('/gigs').update(updatedGigs, () => {

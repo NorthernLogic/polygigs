@@ -20,7 +20,7 @@ path /notificationRegistrations {
 }
 
 path /notificationRegistrations/{id} is NotificationRegistration {
-  read() { false }
+  read() { true }
   write() { prior(this) == null }
 }
 
