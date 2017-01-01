@@ -1,17 +1,9 @@
-const admin = require('firebase-admin');
 const request = require('request');
 const _ = require('lodash');
 
-const serviceAccount = require(process.env.FIREBASE_ADMIN_CERT_PATH);
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://polygigs.firebaseio.com'
-});
-
-const db = admin.database();
+const firebase = require('./firebase-init');
 const registrationPath = '/notificationRegistrations';
-const topicName = gig-notification;
+const topicName = 'gig-notification';
 
 function registerTokens(tokens) {
   var options = {
@@ -38,22 +30,28 @@ function registerTokens(tokens) {
 }
 
 function updateRegistrationEntries([registrations, results]) {
+  const db = firebase.openDatabase();
+
   const updatedRegistrations = _.fromPairs(results.map(([token, result]) => {
     const updatedRegistration = Object.assign({}, registrations[token], { registered: !result.error })
     return [token, updatedRegistration];
   }))
 
-  return new Promise(resolve => db.ref(registrationPath).update(updatedRegistrations, () => resolve()));
+  return new Promise(resolve => db.ref(registrationPath).update(updatedRegistrations, () => {
+    firebase.closeDatabase();
+    resolve();
+  }));
 }
 
 module.exports = done => {
+  const db = firebase.openDatabase();
   const query = db.ref(registrationPath)
     .orderByChild('registered')
     .equalTo(false);
 
   const cleanup = (...args) => {
     // needed or else gulp will not exit
-    db.goOffline();
+    firebase.closeDatabase();
     done();
   };
 

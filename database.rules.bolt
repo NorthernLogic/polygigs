@@ -6,7 +6,8 @@ path / {
 
 path /gigs {
   index() {[
-    "isActive"
+    "isActive",
+    "dateNotificationSent"
   ]}
   read() { true }
   write() { false }
