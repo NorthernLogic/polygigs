@@ -15,7 +15,7 @@ function sendNotification(key, gig, delay) {
       to: `/topics/${topicName}`,
       notification: {
         title: 'PolyGig Posted',
-        body: `${gig.title} is looking for a software developer.`,
+        body: `${gig.posterCompany} is looking for a ${gig.title}`,
         click_action : `https://polygigs.com/gig/${key}`,
         icon: 'https://polygigs.com/src/polymer-logo.png',
       },
