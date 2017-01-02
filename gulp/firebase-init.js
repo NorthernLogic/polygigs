@@ -9,6 +9,7 @@ admin.initializeApp({
 });
 
 const db = admin.database();
+db.goOffline();
 
 module.exports = {
   openDatabase: () => {

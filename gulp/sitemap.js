@@ -1,19 +1,8 @@
-const gulp = require('gulp');
-const fetch = require('node-fetch');
 const sitemap = require('sitemap');
 const fs = require('fs');
 
-function getGigs() {
-  return fetch('https://polygigs.firebaseio.com/gigs.json')
-    .then(res => res.json())
-    // convert to array of [path, value]
-    .then(json => Object.entries(json));
-}
+const gigs = require('./gigs');
 
-function getActiveGigs() {
-  return getGigs()
-    .then(gigs => gigs.filter(([path, gig]) => gig.isActive));
-}
 
 function getMostRecentUpdateDateTime(gigs) {
   return gigs
@@ -44,7 +33,7 @@ function generateSitemap(gigs) {
 }
 
 module.exports = cb => {
-  getActiveGigs()
+  gigs.getActiveGigs()
     .then(generateSitemap)
     .then(sitemap => fs.writeFile('./sitemap.xml', sitemap, cb));
 }
