@@ -62,12 +62,6 @@
           onload();
         }
       })();
-
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/service-worker.js');
-        });
-      }
     </script>
 
     <link rel="import" href="/src/pg-app.html">

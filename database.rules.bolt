@@ -6,8 +6,25 @@ path / {
 
 path /gigs {
   index() {[
-    "isActive"
+    "isActive",
+    "dateNotificationSent"
   ]}
   read() { true }
   write() { false }
+}
+
+path /notificationRegistrations {
+  index() {[
+    "registered"
+  ]}
+}
+
+path /notificationRegistrations/{id} is NotificationRegistration {
+  read() { true }
+  write() { prior(this) == null }
+}
+
+type NotificationRegistration {
+  registered: Boolean,
+  dateRegistered: String,
 }

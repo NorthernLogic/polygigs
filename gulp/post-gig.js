@@ -46,6 +46,7 @@ module.exports = () =>
     answers,
     {
       isActive: true,
+      dateNotificationSent: false,
       datePosted: (new Date()).toISOString(),
     }
   ))

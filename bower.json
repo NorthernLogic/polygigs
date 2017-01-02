@@ -15,7 +15,7 @@
     "paper-material": "PolymerElements/paper-material#^1.0.6",
     "paper-spinner": "PolymerElements/paper-spinner#^1.2.1",
     "polymer": "Polymer/polymer#^1.4.0",
-    "polymerfire": "Firebase/polymerfire#^0.10.2",
+    "polymerfire": "firebase/polymerfire#^0.10.3",
     "raven-js": "^3.9.1"
   },
   "devDependencies": {
