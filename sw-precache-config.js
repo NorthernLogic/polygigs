@@ -12,5 +12,5 @@ module.exports = {
     'src/firebase-messaging-sw.js',
   ],
   navigateFallback: '/index.html',
-  navigateFallbackWhitelist: [/^(?!.*\.html$|\/data\/).*/]
+  navigateFallbackWhitelist: [/^(?!.*\.(html|xml|rss)$|\/data\/).*/]
 }
