@@ -1,12 +1,18 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="data-gigs-list.html">
 
 
 <dom-module id="data-gig-detail">
 <template>
   <firebase-document id="document" app-name="polygigs"
     path="/gigs/[[gigId]]" data="{{raw}}"></firebase-document>
+
+  <!--<template is="dom-if" if="{{!document.online}}">-->
+    <data-gigs-list gigs="{{gigs}}"></data-gigs-list>
+  <!--</template>-->
+
 </template>
 
 <script>
@@ -24,16 +30,39 @@
         observer: '_rawChanged'
       },
 
+      gigs: {
+        type: Object,
+        observer: '_gigsChanged'
+      },
+
       gig: {
         type: Object,
         notify: true
       }
     },
 
+    ready: function() {
+      console.log(this.$.document)
+    },
+
     _rawChanged: function(newValue) {
       // Only set `gig` if there's actually a value there.
       if (!this.$.document.valueIsEmpty(newValue)) {
         this.set('gig', newValue);
+      }
+    },
+
+    _gigsChanged: function(gigs) {
+      if (!this.$.document.online) {
+        var gigId = this.gigId;
+        var gig = gigs.filter(function(gig) {
+          console.log(gig.$key, this.gigId)
+          return gig.$key === gigId;
+        })[0];
+
+        if (gig) {
+          this.set('gig', gig);
+        }
       }
     }
 

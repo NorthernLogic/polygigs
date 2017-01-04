@@ -16,7 +16,8 @@
     "paper-spinner": "PolymerElements/paper-spinner#^1.2.1",
     "polymer": "Polymer/polymer#^1.4.0",
     "polymerfire": "firebase/polymerfire#^0.10.3",
-    "raven-js": "^3.9.1"
+    "raven-js": "^3.9.1",
+    "app-storage": "^0.9.8"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
