@@ -7,9 +7,12 @@
 <dom-module id="data-gig-detail">
 <template>
   <firebase-document id="document" app-name="polygigs"
-    path="/gigs/[[gigId]]" data="{{raw}}"></firebase-document>
+    path="/gigs/[[gigId]]" data="{{raw}}" online="{{isOnline}}"></firebase-document>
 
-  <data-gigs-list gigs-by-id="{{gigsById}}" on-gigs-by-id-changed="_gigDataChanged"></data-gigs-list>
+  <template is="dom-if" if="[[!isOnline]]">
+    <data-gigs-list gigs-by-id="{{gigsById}}" on-gigs-by-id-changed="_gigDataChanged"></data-gigs-list>
+  </template>
+
 </template>
 
 <script>
@@ -42,11 +45,12 @@
       if (this.$.document.online) {
         // Only set `gig` if there's actually a value there.
         if (!this.$.document.valueIsEmpty(this.raw)) {
-          this.set('gig', newValue);
+          this.set('gig', this.raw);
         }
       } else {
+        // We only need to set `gig` if it has not already been set and actually has a value
         // Only set `gig` if there's actually a value there.
-        if (this.gigsById && this.gigsById[this.gigId]) {
+        if (!this.gig && this.gigsById && this.gigsById[this.gigId]) {
           this.set('gig', this.gigsById[this.gigId]);
         }
       }
