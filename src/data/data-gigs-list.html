@@ -28,6 +28,10 @@
         type: Array,
         notify: true
       },
+      gigsById: {
+        type: Object,
+        notify: true
+      }
     },
 
     observers: [
@@ -36,6 +40,10 @@
 
     _processGigs: function(mutations) {
       this.gigs = this.gigsResultPersisted.slice().sort(this._sortGigs).reverse();
+      this.gigsById = this.gigs.reduce(function (acc, gig) {
+        acc[gig.$key] = gig;
+        return acc;
+      }, {});
     },
 
     _sortGigs: function compare(a,b) {

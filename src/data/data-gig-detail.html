@@ -9,10 +9,7 @@
   <firebase-document id="document" app-name="polygigs"
     path="/gigs/[[gigId]]" data="{{raw}}"></firebase-document>
 
-  <!--<template is="dom-if" if="{{!document.online}}">-->
-    <data-gigs-list gigs="{{gigs}}"></data-gigs-list>
-  <!--</template>-->
-
+  <data-gigs-list gigs-by-id="{{gigsById}}" on-gigs-by-id-changed="_gigDataChanged"></data-gigs-list>
 </template>
 
 <script>
@@ -27,12 +24,12 @@
 
       raw: {
         type: Object,
-        observer: '_rawChanged'
+        observer: '_gigDataChanged'
       },
 
-      gigs: {
+      gigsById: {
         type: Object,
-        observer: '_gigsChanged'
+        observer: '_gigDataChanged'
       },
 
       gig: {
@@ -41,31 +38,19 @@
       }
     },
 
-    ready: function() {
-      console.log(this.$.document)
-    },
-
-    _rawChanged: function(newValue) {
-      // Only set `gig` if there's actually a value there.
-      if (!this.$.document.valueIsEmpty(newValue)) {
-        this.set('gig', newValue);
-      }
-    },
-
-    _gigsChanged: function(gigs) {
-      if (!this.$.document.online) {
-        var gigId = this.gigId;
-        var gig = gigs.filter(function(gig) {
-          console.log(gig.$key, this.gigId)
-          return gig.$key === gigId;
-        })[0];
-
-        if (gig) {
-          this.set('gig', gig);
+    _gigDataChanged: function() {
+      if (this.$.document.online) {
+        // Only set `gig` if there's actually a value there.
+        if (!this.$.document.valueIsEmpty(this.raw)) {
+          this.set('gig', newValue);
+        }
+      } else {
+        // Only set `gig` if there's actually a value there.
+        if (this.gigsById && this.gigsById[this.gigId]) {
+          this.set('gig', this.gigsById[this.gigId]);
         }
       }
-    }
-
+    },
   });
 </script>
 </dom-module>
