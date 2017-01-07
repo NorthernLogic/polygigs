@@ -43,7 +43,7 @@
 
   <template is="dom-if" if="[[gig]]">
     <social-meta page-title="[[gig.title]] job at [[gig.posterCompany]] - Polygigs" content="[[gig.posterCompany]] in [[gig.location]] is hiring for [[gig.title]]"></social-meta>
-    <page-title base-title="Polygigs" page-title="[[gig.title]] job at [[gig.posterCompany]]" direction="reversed"></page-title>
+    <page-title base-title="Polygigs" page-title="[[_pageTitle(gig)]]" direction="reversed"></page-title>
   </template>
 
   <div class="container">
@@ -94,7 +94,22 @@
       }, 500);
     },
 
-    _gigChanged: function(newValue) {
+    _pageTitle: function(gig) {
+      var pageTitle = gig.title + ' job at ' + gig.posterCompany;
+
+      // For SEO purposes we should keep our page titles under 60 characters
+      // Here we check the length of our page title plus 10, which is how
+      // many characters our `base-title` is.
+      if ((pageTitle.length + 10) > 60) {
+        // if it's too long, don't include the gig's company to attempt
+        // to make it fit.
+        pageTitle = gig.title;
+      }
+
+      return pageTitle;
+    },
+
+    _gigChanged: function(gig) {
       this.cancelAsync(this.railLoadTimeout);
       this.loading = false;
     },
