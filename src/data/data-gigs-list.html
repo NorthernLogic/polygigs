@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
 
 
@@ -9,6 +10,12 @@
     order-by-child="isActive"
     equal-to="true"
     path="/gigs" data="{{gigsResult}}"></firebase-query>
+
+  <app-indexeddb-mirror
+    key="/gigs"
+    data="{{gigsResult}}"
+    persisted-data="{{gigsResultPersisted}}">
+  </app-indexeddb-mirror>
 </template>
 
 <script>
@@ -21,14 +28,22 @@
         type: Array,
         notify: true
       },
+      gigsById: {
+        type: Object,
+        notify: true
+      }
     },
 
     observers: [
-      '_processGigs(gigsResult.splices)',
+      '_processGigs(gigsResultPersisted.splices)',
     ],
 
     _processGigs: function(mutations) {
-      this.gigs = this.gigsResult.slice().sort(this._sortGigs).reverse();
+      this.gigs = this.gigsResultPersisted.slice().sort(this._sortGigs).reverse();
+      this.gigsById = this.gigs.reduce(function (acc, gig) {
+        acc[gig.$key] = gig;
+        return acc;
+      }, {});
     },
 
     _sortGigs: function compare(a,b) {

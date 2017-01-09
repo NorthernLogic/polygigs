@@ -11,6 +11,8 @@
     "manifest.json",
     "robots.txt",
     "bower_components/webcomponentsjs/webcomponents-lite.min.js",
+    "bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror-worker.js",
+    "bower_components/app-storage/app-indexeddb-mirror/common-worker-scope.js",
     "bower_components/raven-js/dist/raven.min.js",
     "bower_components/raven-js/dist/raven.min.js.map"
   ]
