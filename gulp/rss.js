@@ -17,7 +17,7 @@ function generateRSSFeed(gigs) {
   const entries = gigs
     .reduce((acc, [path, gig]) =>
       acc.concat({
-        url: `gig/${path}/`,
+        url: `https://polygigs.com/gig/${path}/`,
         title: gig.title,
         description: `${gig.posterCompany} is looking for a ${gig.title}`,
         date: gig.datePosted,
