@@ -5,6 +5,7 @@ const firebase = require('./firebase-init');
 const registrationPath = '/notificationRegistrations';
 const topicName = 'gig-notification';
 
+
 function registerTokens(tokens) {
   var options = {
     uri: 'https://iid.googleapis.com/iid/v1:batchAdd',
@@ -30,6 +31,12 @@ function registerTokens(tokens) {
 }
 
 function updateRegistrationEntries([registrations, results]) {
+  if (!process.env.FIREBASE_SERVER_KEY) {
+    // Lookup the key at https://console.firebase.google.com/project/polygigs/settings/cloudmessaging
+    // export FIREBASE_SERVER_KEY=key
+    throw new Error('FIREBASE_SERVER_KEY is not set on env!');
+  }
+
   const db = firebase.openDatabase();
 
   const updatedRegistrations = _.fromPairs(results.map(([token, result]) => {

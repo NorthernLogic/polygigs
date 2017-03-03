@@ -51,8 +51,8 @@ module.exports = () =>
     }
   ))
   .then(answers => {
-    console.log('suggested url:', slug(answers.title).toLowerCase());
+    console.log('suggested url:', slug(`${answers.posterCompany} ${answers.title}`).toLowerCase());
     console.log('\n---\n');
-    console.log(answers);
+    console.log(JSON.stringify(answers, null, 2));
     console.log('\n');
   });
