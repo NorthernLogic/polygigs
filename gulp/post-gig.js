@@ -20,7 +20,7 @@ const questions = [
   {
     type: 'input',
     name: 'location',
-    message: 'What is gig located?'
+    message: 'Where is the gig located?'
   },
   {
     type: 'confirm',
