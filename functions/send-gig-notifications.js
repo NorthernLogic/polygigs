@@ -7,12 +7,12 @@ module.exports = functions.database.ref('/gigs/{key}')
     const key = event.params.key;
 
     if (gig.dateNotificationSent) {
-      console.info(`Skipping {key}: Notification already sent.`);
+      console.info(`Skipping ${key}: Notification already sent.`);
       return;
     }
 
     if (!gig.isActive) {
-      console.info(`Skipping {key}: Gig is not active.`);
+      console.info(`Skipping ${key}: Gig is not active.`);
     }
 
     return admin.messaging().sendToTopic('gig-notification', {
@@ -23,8 +23,5 @@ module.exports = functions.database.ref('/gigs/{key}')
         icon: 'https://polygigs.com/src/polymer-logo.png',
       },
     })
-    .then(() => event.data.ref.set(Object.assign(
-      gig,
-      { dateNotificationSent: (new Date()).toISOString() }
-    )));
+    .then(() => event.data.ref.update({ dateNotificationSent: new Date() }));
 });
