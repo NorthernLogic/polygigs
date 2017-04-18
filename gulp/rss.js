@@ -5,10 +5,11 @@ const gigs = require('./gigs');
 
 
 const feedOptions = {
-  title: 'New PolyGigs Jobs',
-  description: 'A feed containing the latest jobs posted to PolyGigs',
+  title: 'New Polygigs',
+  description: 'A feed containing the latest jobs posted to Polygigs',
   feed_url: 'https://polygigs.com/gigs.rss',
   site_url: 'https://polygigs.com/',
+  image_url: 'https://polygigs.com/src/feed-icon.png',
 };
 
 function generateRSSFeed(gigs) {
